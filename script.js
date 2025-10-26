@@ -129,4 +129,42 @@ document.querySelectorAll('.faq-question').forEach(button => {
         }
     });
 });
+// ===== SEO OPTIMIZATION =====
+
+// Track page views for analytics
+function trackPageView() {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            'page_title': document.title,
+            'page_location': window.location.href,
+            'page_path': window.location.pathname
+        });
+    }
+}
+
+// Track form submissions
+document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'generate_lead', {
+            'value': 1.0,
+            'currency': 'INR',
+            'event_category': 'engagement'
+        });
+    }
+});
+
+// Track button clicks
+document.querySelectorAll('.float-btn, .btn-subscribe').forEach(btn => {
+    btn.addEventListener('click', function() {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'click', {
+                'event_category': 'engagement',
+                'event_label': this.className
+            });
+        }
+    });
+});
+
+trackPageView();
+
 
