@@ -203,16 +203,139 @@ body {
 }
 
 /* Trust Badges Section */
+/* Trust Badges Section */
 .trust-badges {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
     margin: 30px 0;
-    max-width: 600px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
     animation: slideDown 0.8s ease 0.5s both;
+    flex-wrap: wrap;
 }
+
+.badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 18px 24px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+    text-align: center;
+}
+
+.badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+.badge-icon {
+    font-size: 2rem;
+    display: block;
+}
+
+.badge-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.4;
+    white-space: pre-line;
+    display: inline-block;
+}
+
+/* Responsive Design for Badges */
+@media (max-width: 920px) {
+    .trust-badges {
+        gap: 20px;
+    }
+
+    .badge {
+        min-width: 130px;
+        padding: 16px 20px;
+    }
+
+    .badge-icon {
+        font-size: 1.8rem;
+    }
+
+    .badge-text {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .trust-badges {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        display: grid;
+    }
+
+    .badge {
+        padding: 14px 16px;
+        min-width: 120px;
+    }
+
+    .badge-icon {
+        font-size: 1.6rem;
+    }
+
+    .badge-text {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-badges {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin: 20px 0;
+    }
+
+    .badge {
+        padding: 12px 14px;
+        min-width: 110px;
+    }
+
+    .badge-icon {
+        font-size: 1.4rem;
+    }
+
+    .badge-text {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 360px) {
+    .trust-badges {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .badge {
+        padding: 10px 12px;
+        min-width: 100px;
+        gap: 8px;
+    }
+
+    .badge-icon {
+        font-size: 1.2rem;
+    }
+
+    .badge-text {
+        font-size: 0.65rem;
+    }
+}
+
 
 .badge {
     background: rgba(255, 255, 255, 0.15);
