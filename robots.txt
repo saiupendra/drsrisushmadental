@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: *.css
+Allow: *.js
+Allow: *.jpg
+Allow: *.png
+Allow: *.gif
+Allow: *.svg
+
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+
+Crawl-delay: 1
+
+Sitemap: https://drsrisushma.github.io/sitemap.xml
