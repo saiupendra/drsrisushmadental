@@ -1510,3 +1510,216 @@ body {
         font-size: 0.85rem;
     }
 }
+/* ===== TESTIMONIALS SECTION ===== */
+.testimonials {
+    padding: 80px 20px;
+    background-color: var(--light-bg);
+}
+
+.testimonials h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--dark-text);
+}
+
+.testimonials-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--light-text);
+    margin-bottom: 50px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 35px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    border-left: 4px solid var(--primary-color);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-card .stars {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: var(--light-text);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--dark-text);
+    font-size: 0.95rem;
+}
+
+/* ===== FAQ SECTION ===== */
+.faq {
+    padding: 80px 20px;
+    background: white;
+}
+
+.faq h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--dark-text);
+}
+
+.faq-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--light-text);
+    margin-bottom: 50px;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px;
+    background: var(--light-bg);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+    color: var(--primary-color);
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    transition: var(--transition);
+    font-weight: bold;
+}
+
+.faq-item.active .faq-question {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--dark-text);
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: var(--dark-text);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: white;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+}
+
+.faq-answer p {
+    padding: 20px;
+    color: var(--light-text);
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* ===== RESPONSIVE FAQ ===== */
+@media (max-width: 768px) {
+    .faq {
+        padding: 50px 20px;
+    }
+
+    .faq h2 {
+        font-size: 2.2rem;
+    }
+
+    .faq-question {
+        padding: 15px;
+        font-size: 1rem;
+    }
+
+    .faq-answer p {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials {
+        padding: 50px 20px;
+    }
+
+    .testimonials h2 {
+        font-size: 1.8rem;
+    }
+
+    .testimonials-intro {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .testimonial-card {
+        padding: 25px;
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem;
+    }
+
+    .faq h2 {
+        font-size: 1.8rem;
+    }
+
+    .faq-question {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    .faq-answer p {
+        padding: 12px 15px;
+        font-size: 0.85rem;
+    }
+}
+
