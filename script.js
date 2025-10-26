@@ -1,5 +1,5 @@
 // Set the launch date (update this to your actual launch date)
-const launchDate = new Date('2026-01-01T00:00:00').getTime();
+const launchDate = new Date('2026-01-15T00:00:00').getTime();
 
 // Update countdown timer
 function updateCountdown() {
@@ -62,20 +62,23 @@ document.getElementById('subscriptionForm').addEventListener('submit', function(
     setTimeout(() => {
         messageElement.textContent = '';
     }, 5000);
+});
 
-    // Here you can add code to send the email to your backend/service
-    // Example with fetch API:
-    /*
-    fetch('your-backend-endpoint', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email })
-    })
-    .then(response => response.json())
-    .catch(error => console.error('Error:', error));
-    */
+// Hamburger Menu Toggle
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', function() {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
 });
 
 // Smooth scroll for navigation links
@@ -89,5 +92,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 block: 'start'
             });
         }
+    });
+});
+
+// Back to Top Button
+const backToTopBtn = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+
+backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
 });
