@@ -14,4 +14,4 @@ Disallow: /*?*filter=
 
 Crawl-delay: 1
 
-Sitemap: https://drsrisushma.github.io/sitemap.xml
+Sitemap: https://saiupendra.github.io/drsrisushmadental/sitemap.xml
