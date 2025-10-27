@@ -21,21 +21,72 @@
   <link rel="stylesheet" href="styles.css">
 </head>
   <!-- HEADER -->
-<header class="site-header">
-    <div class="container">
-        <a href="index.html" class="logo-link">
-            <img src="dental-clinic-high-resolution-logo-transparent.jpg" alt="Dr Sri Sushma Multispecialty Dental Clinic Logo" width="150" height="45" class="logo-img">
-        </a>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-                <!-- Optionally link to appointment anchor -->
-            </ul>
-        </nav>
-    </div>
-</header>
+.site-header {
+    background: #fff;
+    border-bottom: 1.5px solid #f3ecd7;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px 0 rgba(30,0,60,0.03);
+    z-index: 30;
+}
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+.main-nav li { display: inline; }
+.main-nav a {
+    text-decoration: none;
+    color: #764ba2;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 6px 16px;
+    border-radius: 6px;
+    transition: background 0.12s, color 0.12s;
+    border: 0;
+}
+.main-nav a:hover {
+    background: #f8eafe;
+    color: #222;
+    text-decoration: none;
+}
+.social-icons {
+    display: flex;
+    gap: 16px;
+}
+.social-icon {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    transition: color 0.18s, transform 0.18s;
+}
+.social-icon.fb:hover { color: #4267B2; transform: scale(1.1);}
+.social-icon.ig:hover { color: #E1306C; transform: scale(1.1);}
+.social-icon.wa:hover { color: #25D366; transform: scale(1.1);}
+@media (max-width: 700px) {
+    .header-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .main-nav ul { gap: 12px; }
+    .social-icons { gap: 10px; }
+}
+
 
 <body>
   <header class="service-header">
