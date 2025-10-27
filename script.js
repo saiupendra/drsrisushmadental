@@ -166,3 +166,36 @@ document.querySelectorAll('.float-btn, .btn-subscribe').forEach(btn => {
 });
 
 trackPageView();
+// Scroll-triggered appointment modal
+document.addEventListener('DOMContentLoaded', function() {
+  // Only run if modal not already shown this session
+  let modalShown = false;
+
+  function showAppointmentModal() {
+    if (!modalShown && !sessionStorage.getItem('appointmentModalShown')) {
+      document.getElementById('appointment-modal').style.display = 'block';
+      modalShown = true;
+      sessionStorage.setItem('appointmentModalShown', 'true');
+    }
+  }
+
+  // Show when user scrolls at least 250px down
+  window.addEventListener('scroll', function scrollListener() {
+    if ((window.scrollY || window.pageYOffset) > 250) {
+      showAppointmentModal();
+      // Remove listener so it doesn't trigger again (performance)
+      window.removeEventListener('scroll', scrollListener);
+    }
+  });
+
+  // Modal close logic (same as before)
+  document.getElementById('closeModalBtn').onclick = function() {
+    document.getElementById('appointment-modal').style.display = 'none';
+  };
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('appointment-modal')) {
+      document.getElementById('appointment-modal').style.display = 'none';
+    }
+  };
+});
+
