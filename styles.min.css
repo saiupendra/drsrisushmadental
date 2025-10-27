@@ -1559,94 +1559,112 @@ body{
     .main-nav ul { gap: 18px; font-size: 1rem;}
     .logo-img { height: 80px; width: 80px; }
 }
+/* ===== Appointment Modal Styles ===== */
 .modal {
   display: none;
-  position: fixed; z-index: 9999; left: 0; top: 0;
-  width: 100vw; height: 100vh; overflow: auto;
-  background: rgba(29,12,39,0.24);
-  transition: background 0.18s;
-}
-.modal-content {
-  background: #fff;
-  margin: 60px auto;
-  padding: 44px 32px 36px 32px;
-  border-radius: 18px;
-  max-width: 410px;
-  min-width: 300px;
-  box-shadow: 0 14px 48px rgba(44,0,64,0.20), 0 2px 8px rgba(44,0,64,0.03);
-  text-align: center;
-  position: relative;
-  animation: popFadeIn 0.38s cubic-bezier(0.48, 0.7, 0.4, 1.28);
-}
-@keyframes popFadeIn {
-  0% { opacity:0; transform: scale(0.94);}
-  100% { opacity:1; transform: scale(1);}
-}
-.modal-title {
-  font-size: 1.45rem;
-  font-weight: 800;
-  margin: 0 0 12px 0;
-  letter-spacing: -.01em;
-}
-.modal-title .highlight {
-  color: #764ba2;
-  background: linear-gradient(90deg,#ffc700 0,#ffeed1 90%);
-  border-radius: 7px;
-  padding: 0 2px;
-}
-.modal-desc {
-  font-size: 1.07rem;
-  font-weight: 500;
-  color: #555;
-  margin-bottom: 27px;
-}
-.modal-btn-group {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
   justify-content: center;
-  margin-top: 14px;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.4s ease forwards;
 }
+
+.modal-content {
+  position: relative;
+  background: #ffffff;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  animation: slideUp 0.4s ease forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 26px;
+  color: #444;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+  color: #000;
+}
+
+.modal-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.6rem;
+}
+
+.modal-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.6rem;
+}
+
+/* Buttons */
 .modal-btn {
   display: inline-block;
-  min-width: 120px;
-  margin: 4px 2px 0 2px;
-  padding: 12px 22px;
-  border-radius: 9px;
-  background: #764ba2;
-  color: #fff; 
-  text-decoration: none; 
-  font-weight: 700; 
-  font-size: 1.09rem;
-  border: none;
-  box-shadow: 0 3px 8px rgba(76,33,115,0.09);
-  transition: background 0.18s, transform 0.14s;
+  margin: 6px 5px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.modal-btn:hover, .modal-btn:focus { background: #583488; transform: translateY(-2px); }
-.modal-call { background: #7d56a5; }
-.modal-call:hover { background: #503c81;}
-.modal-whatsapp { background: #25d366; color: #fff; }
-.modal-whatsapp:hover { background: #1ebc59; }
-.modal-email { background: #2274a5; }
-.modal-email:hover { background: #12527a; }
-.modal-close {
-  position: absolute; top: 16px; right: 18px;
-  background: transparent;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  border-radius: 50%;
-  line-height: 1;
-  transition: background 0.23s;
-  z-index: 2;
-  display: flex;
-  align-items: center;
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
 }
-.modal-close:hover svg path { stroke: #764ba2;}
-.modal-close svg { pointer-events: none;}
-@media (max-width: 580px){
-  .modal-content { padding: 30px 10px 24px 10px; min-width: unset;}
-  .modal-title { font-size: 1.1rem; }
-  .modal-btn { padding: 12px 7px; font-size: 1rem;}
-  .modal-btn-group { gap: 10px; }
+
+.modal-btn.modal-whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.modal-btn.modal-email {
+  background: linear-gradient(135deg, #ff9800, #e68900);
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 2rem 1.2rem 1.5rem;
+  }
+
+  .modal-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-btn {
+    width: 100%;
+    margin: 8px 0;
+  }
 }
