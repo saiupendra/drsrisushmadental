@@ -1802,4 +1802,31 @@ body {
     transform: translateY(-2px) scale(1.03);
     border-color: #764ba2;
 }
+/* ===== SERVICE IMAGE STYLING ===== */
+.service-hero-img {
+    margin: 0 0 32px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 400px;
+    transition: transform 0.3s ease;
+}
+
+.service-image:hover {
+    transform: scale(1.02);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .service-image {
+        max-height: 300px;
+    }
+}
 
