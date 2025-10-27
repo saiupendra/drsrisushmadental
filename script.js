@@ -166,19 +166,3 @@ document.querySelectorAll('.float-btn, .btn-subscribe').forEach(btn => {
 });
 
 trackPageView();
-function includeHTML(selector, file) {
-  fetch(file)
-    .then(res => res.text())
-    .then(data => {
-      document.querySelector(selector).innerHTML = data;
-    });
-}
-
-// On DOM ready
-document.addEventListener('DOMContentLoaded', function() {
-  includeHTML('.header-include', 'header.html');
-  includeHTML('.footer-include', 'footer.html');
-});
-
-
-
