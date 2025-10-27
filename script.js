@@ -1,14 +1,14 @@
-// Set the launch date (update this to your actual launch date)
+// ===== Countdown Timer =====
 const launchDate = new Date('2026-01-15T00:00:00').getTime();
 
-// Update countdown timer
 function updateCountdown() {
-  const now = new Date().getTime();
+  const now = Date.now();
   const distance = launchDate - now;
 
-  if (distance < 0) {
+  if (distance <= 0) {
     ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
-      document.getElementById(id).textContent = '0';
+      const el = document.getElementById(id);
+      if (el) el.textContent = '00';
     });
     return;
   }
@@ -18,155 +18,126 @@ function updateCountdown() {
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById('days').textContent = String(days).padStart(2, '0');
-  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+  const set = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = String(val).padStart(2, '0');
+  };
+
+  set('days', days);
+  set('hours', hours);
+  set('minutes', minutes);
+  set('seconds', seconds);
 }
 
-// Update countdown every second
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// Handle email subscription form
-document.getElementById('subscriptionForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const email = document.getElementById('email').value;
-  const messageElement = document.getElementById('formMessage');
+// ===== Email Subscription Form =====
+const subscriptionForm = document.getElementById('subscriptionForm');
+if (subscriptionForm) {
+  subscriptionForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const emailInput = document.getElementById('email');
+    const msg = document.getElementById('formMessage');
 
-  if (email === '') {
-    messageElement.textContent = 'Please enter your email address';
-    messageElement.style.color = '#ff6b6b';
-    return;
-  }
+    if (!emailInput || !msg) return;
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    messageElement.textContent = 'Please enter a valid email address';
-    messageElement.style.color = '#ff6b6b';
-    return;
-  }
+    const email = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  messageElement.textContent = '✓ Thank you! We\'ll notify you soon.';
-  messageElement.style.color = '#4caf50';
-  document.getElementById('email').value = '';
+    if (!email) {
+      msg.textContent = 'Please enter your email address';
+      msg.style.color = '#ff6b6b';
+      return;
+    }
 
-  setTimeout(() => {
-    messageElement.textContent = '';
-  }, 5000);
-});
+    if (!emailRegex.test(email)) {
+      msg.textContent = 'Please enter a valid email address';
+      msg.style.color = '#ff6b6b';
+      return;
+    }
 
-// Hamburger Menu Toggle
+    msg.textContent = '✓ Thank you! We\'ll notify you soon.';
+    msg.style.color = '#4caf50';
+    emailInput.value = '';
+
+    // Analytics event
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'generate_lead', {
+        value: 1.0,
+        currency: 'INR',
+        event_category: 'engagement'
+      });
+    }
+
+    setTimeout(() => (msg.textContent = ''), 5000);
+  });
+}
+
+// ===== Hamburger Menu Toggle =====
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.getElementById('navLinks');
 
 if (menuToggle && navLinks) {
-  menuToggle.addEventListener('click', function () {
+  menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     navLinks.classList.toggle('active');
   });
 
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', () => {
       menuToggle.classList.remove('active');
       navLinks.classList.remove('active');
     });
   });
 }
 
-// Smooth scroll for navigation links
+// ===== Smooth Scroll for Navigation =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+  anchor.addEventListener('click', e => {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// Back to Top Button
+// ===== Back to Top Button =====
 const backToTopBtn = document.getElementById('backToTop');
 if (backToTopBtn) {
-  window.addEventListener('scroll', function () {
-    if (window.pageYOffset > 300) {
-      backToTopBtn.classList.add('show');
-    } else {
-      backToTopBtn.classList.remove('show');
-    }
+  window.addEventListener('scroll', () => {
+    backToTopBtn.classList.toggle('show', window.pageYOffset > 300);
   });
-
-  backToTopBtn.addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
-// ===== FAQ ACCORDION =====
+// ===== FAQ Accordion =====
 document.querySelectorAll('.faq-question').forEach(button => {
   button.addEventListener('click', () => {
-    const faqItem = button.parentElement;
-    const isActive = faqItem.classList.contains('active');
-    document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-    if (!isActive) faqItem.classList.add('active');
+    const parent = button.parentElement;
+    const isActive = parent.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!isActive) parent.classList.add('active');
   });
 });
 
-// ===== SEO OPTIMIZATION =====
-function trackPageView() {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'page_view', {
-      'page_title': document.title,
-      'page_location': window.location.href,
-      'page_path': window.location.pathname
-    });
-  }
-}
-
-document.getElementById('subscriptionForm').addEventListener('submit', function () {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'generate_lead', {
-      'value': 1.0,
-      'currency': 'INR',
-      'event_category': 'engagement'
-    });
-  }
-});
-
-document.querySelectorAll('.float-btn, .btn-subscribe').forEach(btn => {
-  btn.addEventListener('click', function () {
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'click', {
-        'event_category': 'engagement',
-        'event_label': this.className
-      });
-    }
-  });
-});
-
-trackPageView();
-
-// ===== Scroll-triggered Appointment Modal (corrected) =====
-document.addEventListener('DOMContentLoaded', function () {
+// ===== Scroll-triggered Appointment Modal =====
+document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('appointment-modal');
   const closeBtn = document.getElementById('closeModalBtn');
   const servicesSection = document.getElementById('services');
-
   if (!modal || !servicesSection) return;
 
   if (sessionStorage.getItem('appointmentModalShown')) return;
 
-  const observer = new IntersectionObserver((entries, observerInstance) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         modal.style.display = 'flex';
+        modal.style.animation = 'fadeIn 0.5s ease forwards';
         sessionStorage.setItem('appointmentModalShown', 'true');
-        observerInstance.disconnect();
+        obs.disconnect();
       }
     });
   }, { threshold: 0.3 });
@@ -175,13 +146,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
+      modal.style.animation = 'fadeOut 0.3s ease forwards';
+      setTimeout(() => (modal.style.display = 'none'), 300);
     });
   }
 
-  window.addEventListener('click', event => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
+  window.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.style.animation = 'fadeOut 0.3s ease forwards';
+      setTimeout(() => (modal.style.display = 'none'), 300);
+    }
+  });
+});
+
+// ===== Google Analytics Page View =====
+function trackPageView() {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname
+    });
+  }
+}
+trackPageView();
+
+// ===== Track Button Clicks (Floating/Subscribe) =====
+document.querySelectorAll('.float-btn, .btn-subscribe').forEach(btn => {
+  btn.addEventListener('click', function () {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'click', {
+        event_category: 'engagement',
+        event_label: this.className
+      });
     }
   });
 });
