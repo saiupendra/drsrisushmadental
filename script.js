@@ -181,11 +181,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Show when user scrolls at least 250px down
   window.addEventListener('scroll', function scrollListener() {
-    if ((window.scrollY || window.pageYOffset) > 250) {
-      showAppointmentModal();
-      // Remove listener so it doesn't trigger again (performance)
-      window.removeEventListener('scroll', scrollListener);
-    }
+    const servicesSection = document.getElementById('services');
+const rect = servicesSection.getBoundingClientRect();
+const offsetTop = rect.top + window.pageYOffset;
+
+if ((window.scrollY || window.pageYOffset) >= offsetTop - window.innerHeight / 2) {
+  showAppointmentModal();
+  window.removeEventListener('scroll', scrollListener);
+}
+
   });
 
   // Modal close logic (same as before)
