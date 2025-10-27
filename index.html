@@ -599,14 +599,19 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 <!--End of Tawk.to Script-->
 <!-- Appointment Booking Modal -->
-<div id="appointment-modal" class="modal">
+<!-- Improved Appointment Booking Modal -->
+<div id="appointment-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="book-now-title">
   <div class="modal-content">
-    <span class="modal-close" id="closeModalBtn">&times;</span>
-    <h3>Ready for a Healthy, Beautiful Smile?</h3>
-    <p>Book your appointment now – quick, easy, and personalized for you!</p>
-    <a href="tel:+919999999999" class="modal-btn">Call Now</a>
-    <a href="https://wa.me/919999999999" class="modal-btn modal-whatsapp" target="_blank">WhatsApp Us</a>
-    <a href="mailto:info@yourclinic.com" class="modal-btn modal-email">Email</a>
+    <button class="modal-close" id="closeModalBtn" aria-label="Close popup">
+      <svg width="28" height="28" viewBox="0 0 28 28"><path d="M7 7l14 14M21 7L7 21" stroke="#888" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </button>
+    <h3 id="book-now-title" class="modal-title">Ready for a <span class="highlight">Healthy, Beautiful Smile?</span></h3>
+    <p class="modal-desc">Book your appointment now – quick, easy, and personalized for you!</p>
+    <div class="modal-btn-group">
+      <a href="tel:+919999999999" class="modal-btn modal-call">Call Now</a>
+      <a href="https://wa.me/919999999999" class="modal-btn modal-whatsapp" target="_blank">WhatsApp Us</a>
+      <a href="mailto:info@yourclinic.com" class="modal-btn modal-email">Email</a>
+    </div>
   </div>
 </div>
 </body>
