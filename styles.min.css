@@ -92,9 +92,7 @@ body{
     align-items:center
 }
 .logo-img{
-    height:80px;
-    width:auto;
-    object-fit:contain
+    height:54px;width:54px;border-radius:15px;
 }
 .nav-links{
     display:flex;
