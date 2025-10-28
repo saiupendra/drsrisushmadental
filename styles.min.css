@@ -90,6 +90,7 @@ body{
 .logo{
     display:flex;
     align-items:center
+    height:66px;width:66px;border-radius:16px;background:#fff;box-shadow:0 3px 15px #1976d22d;}
 }
 .logo-img{
     height:80px;
@@ -1678,4 +1679,4 @@ body{
     margin: 8px 0;
   }
 }
-.hero-logo{height:66px;width:66px;border-radius:16px;background:#fff;box-shadow:0 3px 15px #1976d22d;}
+
