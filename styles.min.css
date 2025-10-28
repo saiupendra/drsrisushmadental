@@ -400,7 +400,7 @@ body{
 }
 .back-to-top,.floating-social{
     position:fixed;
-    center: 100%;
+    top: 70%;
     right:30px;
     transform: translateX(-50%);
     display: flex;
