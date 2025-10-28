@@ -197,8 +197,8 @@ body{
     animation:1s fadeIn
 }
 .hero-logo-img{
-    height:54px;
-    width:54px;
+    height:254px;
+    width:254px;
     border-radius:15px;
     filter:drop-shadow(0 5px 15px rgba(0, 0, 0, .3))
 }
