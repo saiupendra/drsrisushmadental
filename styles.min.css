@@ -85,6 +85,61 @@ body{
 .head-nav-links > a {
   margin-right: 16px;
 }
+.head-social-icons {
+  margin-left: auto; /* pushes it to the right */
+  display: flex;     /* makes sure the icons are in a row */
+  gap: 12px;         /* spacing between icons, adjust as needed */
+}
+.my-social-icons{
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+  position: fixed;
+  right: 20px; /* Adjust as needed */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  z-index: 99; /* Ensure it stays on top */
+}
+.head-social-icon{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap
+    align-items:center;
+    display:flex;
+    color:#fff;
+    transition:var(--transition);
+    text-decoration:none
+    width:55px;
+    height:55px;
+    background:rgba(255,255,255,.2);
+    border-radius:50%;
+    justify-content:center;
+    border:2px solid rgba(255,255,255,.3)
+}
+.head-social-icon svg{
+    width:24px;
+    height:24px;
+    fill:rgb(255, 253, 253);
+    stroke:rgb(1, 0, 1);
+    stroke-width:1;
+    stroke-linecap:round;
+    stroke-linejoin:round
+}
+.head-social-icon:hover{
+    background:rgba(255,255,255,.4);
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,0,0,.2)
+}
+
+.head-social-icon {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    transition: color 0.2s, transform 0.2s;
+}
 .navbar{
     background:#fff;
     padding:1rem 0;
