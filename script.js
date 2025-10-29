@@ -182,3 +182,33 @@ document.querySelectorAll('.float-btn, .btn-subscribe').forEach(btn => {
     }
   });
 });
+// Grand Opening Modal Popup Logic
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var grandModal = document.getElementById('grandOpeningModal');
+    if (grandModal) grandModal.classList.add('active');
+  }, 3000);
+
+  var grandCloseBtn = document.getElementById('closeGrandOpening');
+  if (grandCloseBtn) {
+    grandCloseBtn.onclick = function() {
+      var grandModal = document.getElementById('grandOpeningModal');
+      if (grandModal) grandModal.classList.remove('active');
+    };
+  }
+  var grandOverlay = document.getElementById('grandOpeningModal');
+  if (grandOverlay) {
+    grandOverlay.onclick = function(e) {
+      if (e.target === grandOverlay) grandOverlay.classList.remove('active');
+    };
+  }
+  var grandForm = document.querySelector('.subscribe-form');
+  if (grandForm) {
+    grandForm.onsubmit = function(e) {
+      e.preventDefault();
+      alert('Thank you for subscribing!');
+      var grandModal = document.getElementById('grandOpeningModal');
+      if (grandModal) grandModal.classList.remove('active');
+    };
+  }
+});
