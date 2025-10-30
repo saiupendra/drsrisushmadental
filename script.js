@@ -200,3 +200,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Error loading footer:', error));
 });
+//============service pages script=================
+document.querySelectorAll('.before-after-slider').forEach(function(slider) {
+  const range = slider.querySelector('.slider-range');
+  const afterImg = slider.querySelectorAll('img')[1];
+  range.addEventListener('input', function() {
+    afterImg.style.clipPath = `inset(0 ${100 - this.value}% 0 0)`;
+  });
+});
