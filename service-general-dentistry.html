@@ -216,8 +216,6 @@
     </div>
   </div>
 </section>
-  <!--react test-->
-  <div id="react-widget"></div>
 
 <section class="mb-5">
   <h3 class="h5 section-title mb-4 text-center">General Dentistry FAQs</h3>
@@ -312,28 +310,5 @@
   <div id="footer-placeholder"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
-  <!-- React and ReactDOM CDN scripts -->
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-<!-- React mount point, wherever you want the widget -->
-<div id="react-widget"></div>
-
-<!-- Place these right before the closing </body> tag -->
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-<script type="text/javascript">
-  const e = React.createElement;
-  function AppointmentBanner() {
-    return e(
-      "div",
-      { style: { background: "#f6eafc", borderRadius: "18px", padding: "18px 10px", marginBottom: "18px", textAlign: "center", fontWeight: "600", color: "#764ba2" } },
-      "Try our NEW online dental appointment booking! 🚀"
-    );
-  }
-  ReactDOM.render(
-    e(AppointmentBanner),
-    document.getElementById("react-widget")
-  );
-</script>
 </body>
 </html>
